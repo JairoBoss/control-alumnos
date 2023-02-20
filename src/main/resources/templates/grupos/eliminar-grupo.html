@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head-fragment :: title('Nuevo profesor')"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <th:block th:include="fragments/sidebar-fragment"/>
+    <th:block th:include="fragments/header-fragment"/>
+</div>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="text-uppercase">Eliminar grupo</h6>
+                <hr>
+
+                <form class="row g-3" action="#" th:action="@{/grupos/eliminar}" th:object="${grupo}"
+                      method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="col-md-4">
+                        <label for="input1" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="input1" placeholder="Nombre"
+                               th:field="*{nombre}" disabled>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label for="input12" class="form-label">Profesor</label>
+
+
+                        <input type="text" class="form-control" id="input12" placeholder="Nombre"
+                               th:value="${nombreProfe != null} ? ${nombreProfe} : ''" disabled>
+
+
+
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label for="input11" class="form-label">Descripcion</label>
+                        <textarea class="form-control" id="input11" placeholder="Descripcion ..." rows="3"
+                                  th:field="*{descripcion}" disabled></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <input type="submit" class="btn btn-danger px-4" value="Eliminar"/>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

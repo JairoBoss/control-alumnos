@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head-fragment :: title('Editar grupo')"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <th:block th:include="fragments/sidebar-fragment"/>
+    <th:block th:include="fragments/header-fragment"/>
+</div>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="text-uppercase">Editar grupo</h6>
+                <hr>
+
+                <form class="row g-3" action="#" th:action="@{/grupos/editar}" th:object="${grupo}"
+                      method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="col-md-4">
+                        <label for="input1" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="input1" placeholder="Nombre"
+                               th:field="*{nombre}" required>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label for="input19" class="form-label">Profesor</label>
+
+                        <input type="hidden" class="form-control" id="profesor" th:value="${idProfe}"
+                               th:field="*{profesor}"/>
+
+                        <select id="input19" class="form-select" required>
+
+                            <option th:each="profe : ${profesores}"
+                                    th:value="${profe.id}"
+                                    th:text="${profe.nombre}"
+                                    th:selected="${  idProfe == profe.id}">Rol
+                            </option>
+                        </select>
+
+
+                    </div>
+
+
+                    <script>
+                        // Capturar el evento change del select de roles
+                        document.getElementById('input19').addEventListener('change', function () {
+                            // Obtener el valor seleccionado del select de roles
+                            var idProfe = this.value;
+                            // Actualizar el valor del campo oculto para el ID del rol
+
+                            document.getElementById('profesor').value = idProfe;
+                        });
+                    </script>
+
+
+                    <div class="col-md-4">
+                        <label for="input11" class="form-label">Descripcion</label>
+                        <textarea class="form-control" id="input11" placeholder="Descripcion ..." rows="3"
+                                  th:field="*{descripcion}" required></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <input type="submit" class="btn btn-primary px-4" value="Actualizar"/>
+                            <input type="reset" class="btn btn-light px-4" value="Limpiar"/>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

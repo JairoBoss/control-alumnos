@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head-fragment :: title('Calificaciones')"/>
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="fragments/sidebar-fragment"/>
+    <th:block th:include="fragments/header-fragment"/>
+</div>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Calificaciones</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item">
+                            <a href="../"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Todas
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                    <div class="ms-auto">
+                        <a
+                                th:href="@{/calificaciones/nuevo}"
+                                class="btn btn-primary radius-30 mt-2 mt-lg-0"
+                        ><i class="bx bxs-plus-square"></i>Nueva calificacion</a
+                        >
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Puntaje</th>
+                            <th>Materia</th>
+                            <th>Alumno</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="calificacion : ${calificaciones}">
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-2">
+                                        <h6
+                                                class="mb-0 font-14"
+                                                th:text="${calificacion.id.substring(0, 8)}"
+                                        ></h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td th:text="${calificacion?.puntaje}">Nombre</td>
+
+                            <td th:text="${calificacion?.materia?.nombre}"></td>
+
+                            <td th:text="${calificacion?.alumno?.nombre}"></td>
+                            <td>
+                                <div class="d-flex order-actions">
+                                    <a
+                                            th:href="@{/calificaciones/editar/{id}(id=${calificacion.id})}"
+                                            class=""
+                                    ><i class="bx bxs-edit"></i
+                                    ></a>
+                                    <a
+                                            th:href="@{/calificaciones/eliminar/{id}(id=${calificacion.id})}"
+                                            class="ms-3"
+                                    ><i class="bx bxs-trash"></i
+                                    ></a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<th:block th:fragment="sidebar">
+    <div class="sidebar-wrapper" data-simplebar="true">
+        <div class="sidebar-header">
+            <div>
+                <img src="/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            </div>
+            <div>
+                <h4 class="logo-text">Escuela - CS</h4>
+            </div>
+
+        </div>
+        <!--navigation-->
+        <ul class="metismenu" id="menu">
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                    </div>
+                    <div class="menu-title">Dashboard</div>
+                </a>
+                <ul>
+                    <li><a href="/profesores"><i class="bx bx-right-arrow-alt"></i>Profesores</a>
+                    </li>
+                    <li><a href="/grupos"><i class="bx bx-right-arrow-alt"></i>Grupos</a>
+                    </li>
+                    <li><a href="/materias"><i class="bx bx-right-arrow-alt"></i>Materias</a>
+                    </li>
+
+                    <li><a href="/alumnos"><i class="bx bx-right-arrow-alt"></i>Alumnos</a>
+                    </li>
+
+                    <li><a href="/calificaciones"><i class="bx bx-right-arrow-alt"></i>Calificaciones</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <!--end navigation-->
+    </div>
+
+
+</th:block>

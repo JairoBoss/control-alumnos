@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head-fragment :: title('Nueva calificacion')"/>
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="fragments/sidebar-fragment"/>
+    <th:block th:include="fragments/header-fragment"/>
+</div>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="text-uppercase">Nueva calificacion</h6>
+                <hr/>
+
+                <form
+                        class="row g-3"
+                        action="#"
+                        th:action="@{/calificaciones/nuevocalificacion}"
+                        th:object="${calificacion}"
+                        method="post"
+                >
+                    <div class="col-md-4">
+                        <label for="input1" class="form-label">Puntaje</label>
+                        <input
+                                type="number"
+                                class="form-control"
+                                id="input1"
+                                placeholder="Puntaje"
+                                th:field="*{puntaje}"
+                                required
+                        />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="input19" class="form-label">Alumno</label>
+
+                        <select
+                                th:field="*{alumno}"
+                                id="input19"
+                                class="form-select"
+                                required
+                        >
+                            <option value="">Seleccione un alumno</option>
+                            <th:block th:each="alumno : ${alumnos}">
+                                <option
+                                        th:value="${alumno.id}"
+                                        th:text="${alumno.nombre}"
+                                ></option>
+                            </th:block>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label for="input19" class="form-label">Materia</label>
+
+                        <select
+                                th:field="*{materia}"
+                                class="form-select"
+                                required
+                        >
+                            <option value="">Seleccione una materia</option>
+                            <th:block th:each="materia : ${materias}">
+                                <option
+                                        th:value="${materia.id}"
+                                        th:text="${materia.nombre}"
+                                ></option>
+                            </th:block>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <input
+                                    type="submit"
+                                    class="btn btn-primary px-4"
+                                    value="Crear"
+                            />
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

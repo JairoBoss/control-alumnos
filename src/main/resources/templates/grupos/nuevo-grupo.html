@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head-fragment :: title('Nuevo grupo')"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <th:block th:include="fragments/sidebar-fragment"/>
+    <th:block th:include="fragments/header-fragment"/>
+</div>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="text-uppercase">Nuevo grupo</h6>
+                <hr>
+
+                <form class="row g-3" action="#" th:action="@{/grupos/nuevogrupo}" th:object="${grupo}"
+                      method="post">
+                    <div class="col-md-4">
+                        <label for="input1" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="input1" placeholder="Nombre"
+                               th:field="*{nombre}" required>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label for="input19" class="form-label">Profesor</label>
+
+                        <select th:field="*{profesor}" id="input19" class="form-select" required>
+                            <option value="">Seleccione un profesor</option>
+                            <th:block th:each="profesor : ${profesores}">
+                                <option th:value="${profesor.id}" th:text="${profesor.nombre}"></option>
+                            </th:block>
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <label for="input11" class="form-label">Descripcion</label>
+                        <textarea class="form-control" id="input11" placeholder="Descripcion ..." rows="3"
+                                  th:field="*{descripcion}" required></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <input type="submit" class="btn btn-primary px-4" value="Crear"/>
+                            <input type="reset" class="btn btn-light px-4" value="Limpiar"/>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
