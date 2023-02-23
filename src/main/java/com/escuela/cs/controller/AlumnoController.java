@@ -28,7 +28,7 @@ public class AlumnoController {
     @Autowired
     private GrupoRepository grupoRepository;
 
-    @Autowired
+    @Autowired  
     private CalificacionRepository calificacionRepository;
 
     @GetMapping("/alumnos")
